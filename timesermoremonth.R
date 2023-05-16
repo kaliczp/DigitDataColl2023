@@ -1,9 +1,14 @@
 library(xts)
+library(readxl)
 Sys.setlocale("LC_ALL", "C")
-meteo  <-  as.data.frame(read_excel(path = "SoE-2023-01.xls", sheet = 2))
-names(meteo) <- names(meteo2)
-meteo2  <-  data.frame(read_excel(path = "SoE-2023-02.xls", sheet = 2))
-meteo3  <-  data.frame(read_excel(path = "SoE-2023-03.xls", sheet = 2))
+
+filenames <- dir(pattern = "SoE")
+meteo  <-  as.data.frame(read_excel(path = filenames[1], sheet = 2))
+meteonames <- names(meteo)
+meteo2  <-  data.frame(read_excel(path = filenames[2], sheet = 2))
+names(meteo2) <- meteonames
+meteo3  <-  data.frame(read_excel(path = filenames[3], sheet = 2))
+names(meteo3) <- meteonames
 meteoful <- rbind(meteo, meteo2, meteo3)
 
 soiltemp.xts <- xts(meteoful[,c(10,12,14,16)], meteoful[,1])
