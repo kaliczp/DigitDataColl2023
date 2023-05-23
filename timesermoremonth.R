@@ -22,3 +22,4 @@ plot(soiltemp.xts['2023'])
 plot(soiltemp.xts['2023-01'])
 
 plot(soiltemp.xts['2023-01-16/2023-01-20'])
+addLegend("bottomleft", lwd = 1, bg = "white") # see ?addLegend and ?legend
