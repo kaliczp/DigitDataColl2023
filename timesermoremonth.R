@@ -5,6 +5,10 @@ Sys.setlocale("LC_ALL", "C")
 filenames <- dir(pattern = "SoE")
 meteo  <-  as.data.frame(read_excel(path = filenames[1], sheet = 2))
 meteonames <- names(meteo)
+## Name manipulation for soil temperature
+meteonames[c(10,12,14,16)] <- paste0("TS", 1:4)
+meteonames[2] <- "AirTemp"
+names(meteo) <- meteonames
 
 for(ttindex in 2:length(filenames)) {
     ttmeteo  <-  as.data.frame(read_excel(path = filenames[ttindex], sheet = 2))
