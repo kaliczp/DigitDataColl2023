@@ -12,6 +12,6 @@ for(ttindex in 2:length(filenames)) {
     meteo <- rbind(meteo, ttmeteo)
 }
 
-soiltemp.xts <- xts(meteo[,c(10,12,14,16)], meteo[,1])
+soiltemp.xts <- xts(meteo[,c(2,10,12,14,16)], meteo[,1])
 
 plot(soiltemp.xts)
