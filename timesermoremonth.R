@@ -15,3 +15,10 @@ for(ttindex in 2:length(filenames)) {
 soiltemp.xts <- xts(meteo[,c(2,10,12,14,16)], meteo[,1])
 
 plot(soiltemp.xts)
+
+## Indexing with xts
+plot(soiltemp.xts['2023'])
+
+plot(soiltemp.xts['2023-01'])
+
+plot(soiltemp.xts['2023-01-16/2023-01-20'])
