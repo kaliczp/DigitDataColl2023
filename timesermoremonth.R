@@ -1,7 +1,8 @@
 library(xts)
 library(readxl)
-Sys.setlocale("LC_ALL", "C")
+# Sys.setlocale("LC_ALL", "C")
 
+Begin.time <- Sys.time()
 filenames <- dir(pattern = "SoE")
 meteo  <-  as.data.frame(read_excel(path = filenames[1], sheet = 2))
 meteonames <- names(meteo)
@@ -19,6 +20,9 @@ for(ttindex in 2:length(filenames)) {
 soiltemp.xts <- xts(meteo[,c(2,10,12,14,16)], meteo[,1])
 
 plot(soiltemp.xts)
+
+End.time <- Sys.time()
+End.time - Begin.time
 
 ## Indexing with xts
 plot(soiltemp.xts['2023'])
