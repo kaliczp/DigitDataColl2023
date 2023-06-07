@@ -24,6 +24,23 @@ plot(soiltemp.xts)
 End.time <- Sys.time()
 End.time - Begin.time
 
+### Different method
+## Function to import
+soiltempimport <- function(x) {
+    meteo  <-  as.data.frame(read_excel(path = x, sheet = 2))
+    names(meteo) <- meteonames
+    meteo
+}
+
+## Import with lapply function
+Begin.time <- Sys.time()
+raw.list <- lapply(filenames, soiltempimport)
+raw <- do.call(rbind, raw.list)
+soiltemp.xts <- xts(raw[,c(2,10,12,14,16)], raw[,1])
+plot(soiltemp.xts)
+End.time <- Sys.time()
+End.time - Begin.time
+
 ## Indexing with xts
 plot(soiltemp.xts['2023'])
 
