@@ -9,6 +9,10 @@ meteonames <- names(meteo)
 ## Name manipulation for soil temperature
 meteonames[c(10,12,14,16)] <- paste0("TS", 1:4)
 meteonames[2] <- "AirTemp"
+meteonames[3] <- "Humidity"
+meteonames[4] <- "Precip"
+meteonames[5] <- "Intensity"
+meteonames[6] <- "Weight"
 names(meteo) <- meteonames
 
 for(ttindex in 2:length(filenames)) {
